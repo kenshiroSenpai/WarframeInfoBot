@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const https = require("https");
 const bot = new Discord.Client();
-const dotenv = require("dotenv/config");
+require("dotenv/config");
 
 bot.login(process.env.TOKEN_BOT);
 
