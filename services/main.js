@@ -5,9 +5,9 @@ const bot = new Discord.Client();
 bot.login(auth.token);
 
 bot.on('ready', async () => {
-    console.log("Ordis esta listo.");
+    console.log("Ordis is ready.");
 
-    bot.user.setActivity("'$help' para ayudarte tenno :)");
+    bot.user.setActivity("'$help' to help you tenno :)");
 });
 
 bot.on('message', async message => {
