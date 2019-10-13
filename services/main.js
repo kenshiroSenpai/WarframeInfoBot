@@ -6,6 +6,7 @@ require('dotenv/config');
 bot.login(process.env.TOKEN);
 
 bot.on('ready', async () => {
+    process.env.PORT
     console.log("Ordis is ready.");
 
     bot.user.setActivity("'$help' to help you tenno :)");
