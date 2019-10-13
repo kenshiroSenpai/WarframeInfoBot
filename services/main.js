@@ -207,11 +207,9 @@ bot.on('message', async message => {
                         while (JSON.parse(data).length > j) {
                             if (JSON.parse(data)[j].syndicate === "Ostrons") {
                                 for (let jobs of JSON.parse(data)[j].jobs) {
-                                    console.log(jobs);
                                     while (rewardLength < jobs.rewardPool.length) {
                                         rewardPool += jobs.rewardPool[rewardLength] + ", ";
                                         rewardLength++;
-                                        console.log(jobs);
                                     }
                                     mission += "Mision " + i + ": " + jobs.type +
                                         "\nTime remaining: " + JSON.parse(data)[j].eta +
@@ -247,11 +245,9 @@ bot.on('message', async message => {
                         while (JSON.parse(data).length > j) {
                             if (JSON.parse(data)[j].syndicate === "Solaris United") {
                                 for (let jobs of JSON.parse(data)[j].jobs) {
-                                    console.log(jobs);
                                     while (rewardLength < jobs.rewardPool.length) {
                                         rewardPool += jobs.rewardPool[rewardLength] + ", ";
                                         rewardLength++;
-                                        console.log(jobs);
                                     }
                                     mission += "Mision " + i + ": " + jobs.type +
                                         "\nTime remaining: " + JSON.parse(data)[j].eta +
