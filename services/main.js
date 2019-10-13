@@ -45,7 +45,7 @@ bot.on('message', async message => {
                     + "```");
                 break;
             case 'cetus':
-                https.get('https://api.warframestat.us/pc/cetusCycle', (res) => {
+                https.get('https://api.warframestat.us/pc/cetusCycle', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
                     res.on('data', function (d) {
@@ -61,12 +61,12 @@ bot.on('message', async message => {
                         }
 
                     })
-                }).catch('error', (err) => {
+                }).on('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
             case 'earth':
-                https.get('https://api.warframestat.us/pc/earthCycle', (res) => {
+                https.get('https://api.warframestat.us/pc/earthCycle', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
                     res.on('data', function (d) {
@@ -81,12 +81,12 @@ bot.on('message', async message => {
                                 "```");
                         }
                     });
-                }).catch('error', (err) => {
+                }).on('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
             case 'events':
-                https.get('https://api.warframestat.us/pc/events', (res) => {
+                https.get('https://api.warframestat.us/pc/events', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
                     res.on('data', function (d) {
@@ -109,12 +109,12 @@ bot.on('message', async message => {
                             i++
                         }
                     })
-                }).catch('error', (err) => {
+                }).on('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
             case 'nightwave':
-                https.get('https://api.warframestat.us/pc/nightwave', (res) => {
+                https.get('https://api.warframestat.us/pc/nightwave', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
                     res.on('data', function (d) {
@@ -138,12 +138,12 @@ bot.on('message', async message => {
                         }
                         message.channel.send("```" + challenges + " ```");
                     })
-                }).catch('error', (err) => {
+                }).on('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
             case 'acolytes':
-                https.get('https://api.warframestat.us/pc/persistentEnemies', (res) => {
+                https.get('https://api.warframestat.us/pc/persistentEnemies', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
                     res.on('data', function (d) {
@@ -164,12 +164,12 @@ bot.on('message', async message => {
                             i++
                         }
                     })
-                }).catch('error', (err) => {
+                }).on('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
             case 'sortie':
-                https.get('https://api.warframestat.us/pc/sortie', (res) => {
+                https.get('https://api.warframestat.us/pc/sortie', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
                     res.on('data', function (d) {
@@ -187,12 +187,12 @@ bot.on('message', async message => {
                         }
                         message.channel.send("```" + mission + " ```");
                     })
-                }).catch('error', (err) => {
+                }).on('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
             case 'ostrons':
-                https.get('https://api.warframestat.us/pc/syndicateMissions', (res) => {
+                https.get('https://api.warframestat.us/pc/syndicateMissions', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
                     res.on('data', function (d) {
@@ -225,12 +225,12 @@ bot.on('message', async message => {
                             }
                         }
                     });
-                }).catch('error', (err) => {
+                }).on('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
             case 'fortuna':
-                https.get('https://api.warframestat.us/pc/syndicateMissions', (res) => {
+                https.get('https://api.warframestat.us/pc/syndicateMissions', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
                     res.on('data', function (d) {
@@ -263,12 +263,12 @@ bot.on('message', async message => {
                             }
                         }
                     });
-                }).catch('error', (err) => {
+                }).on('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
             case 'orbvallis':
-                https.get('https://api.warframestat.us/pc/vallisCycle', (res) => {
+                https.get('https://api.warframestat.us/pc/vallisCycle', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
                     res.on('data', function (d) {
@@ -282,12 +282,12 @@ bot.on('message', async message => {
                             message.channel.send("```diff\n" + "- Queda: " + JSON.parse(data).timeLeft + " para el calor.\n" + "```");
                         }
                     });
-                }).catch('error', (err) => {
+                }).on('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
             case 'barotime':
-                https.get('https://api.warframestat.us/pc/voidTrader', (res) => {
+                https.get('https://api.warframestat.us/pc/voidTrader', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
                     res.on('data', function (d) {
@@ -301,12 +301,12 @@ bot.on('message', async message => {
                             message.channel.send("```" + "Queda: " + JSON.parse(data).startString + " para que llegue a " + JSON.parse(data).location + "```");
                         }
                     });
-                }).catch('error', (err) => {
+                }).on('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
             case 'baroreward':
-                https.get('https://api.warframestat.us/pc/voidTrader', (res) => {
+                https.get('https://api.warframestat.us/pc/voidTrader', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
                     res.on('data', function (d) {
@@ -327,12 +327,12 @@ bot.on('message', async message => {
                             message.channel.send("```" + "Queda: " + JSON.parse(data).startString + " para que llegue a " + JSON.parse(data).location + "```");
                         }
                     });
-                }).catch('error', (err) => {
+                }).on('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
             case 'fomorianprogress':
-                https.get('https://api.warframestat.us/pc/constructionProgress', (res) => {
+                https.get('https://api.warframestat.us/pc/constructionProgress', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
                     res.on('data', function (d) {
@@ -341,12 +341,12 @@ bot.on('message', async message => {
                     res.on('end', () => {
                         message.channel.send("```Fomorian state: " + JSON.parse(data).fomorianProgress + "%```");
                     });
-                }).catch('error', (err) => {
+                }).on('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
             case 'razorbackprogress':
-                https.get('https://api.warframestat.us/pc/constructionProgress', (res) => {
+                https.get('https://api.warframestat.us/pc/constructionProgress', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
                     res.on('data', function (d) {
@@ -355,12 +355,12 @@ bot.on('message', async message => {
                     res.on('end', () => {
                         message.channel.send("```Razorback state: " + JSON.parse(data).razorbackProgress + "%```");
                     });
-                }).catch('error', (err) => {
+                }).on('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
             case 'fissures':
-                https.get('https://api.warframestat.us/pc/fissures', (res) => {
+                https.get('https://api.warframestat.us/pc/fissures', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
                     res.on('data', function (d) {
@@ -377,7 +377,7 @@ bot.on('message', async message => {
                         }
                         message.channel.send("```" + mission + "```");
                     });
-                }).catch('error', (err) => {
+                }).on('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
