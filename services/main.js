@@ -47,10 +47,10 @@ bot.on('message', async message => {
                 https.get('https://api.warframestat.us/pc/cetusCycle', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
-                    res.on('data', function (d) {
+                    res.on('data', async function (d) {
                         data += d;
                     });
-                    res.on('end', () => {
+                    res.on('end', async () => {
                         if (JSON.parse(data).isDay) {
                             message.channel.send("```yaml\n" + JSON.parse(data).timeLeft + " left until night.\n"
                                 + "```");
@@ -60,7 +60,7 @@ bot.on('message', async message => {
                         }
 
                     })
-                }).on('error', (err) => {
+                }).on('error', async (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -68,10 +68,10 @@ bot.on('message', async message => {
                 https.get('https://api.warframestat.us/pc/earthCycle', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
-                    res.on('data', function (d) {
+                    res.on('data', async function (d) {
                         data += d;
                     });
-                    res.on('end', () => {
+                    res.on('end', async () => {
                         if (JSON.parse(data).isDay) {
                             message.channel.send("```yaml\n" + JSON.parse(data).timeLeft + " left until night.\n"
                                 + "```");
@@ -80,7 +80,7 @@ bot.on('message', async message => {
                                 "```");
                         }
                     });
-                }).on('error', (err) => {
+                }).on('error', async (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -88,11 +88,11 @@ bot.on('message', async message => {
                 https.get('https://api.warframestat.us/pc/events', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
-                    res.on('data', function (d) {
+                    res.on('data', async function (d) {
                         data += d;
                     });
 
-                    res.on('end', () => {
+                    res.on('end', async () => {
 
                         let i = 1;
                         let today = new Date();
@@ -108,7 +108,7 @@ bot.on('message', async message => {
                             i++
                         }
                     })
-                }).on('error', (err) => {
+                }).on('error', async (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -116,11 +116,11 @@ bot.on('message', async message => {
                 https.get('https://api.warframestat.us/pc/nightwave', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
-                    res.on('data', function (d) {
+                    res.on('data', async function (d) {
                         data += d;
                     });
 
-                    res.on('end', () => {
+                    res.on('end', async () => {
                         if (!JSON.parse(data).active) {
                             message.channel.send("```diff\n- No nightwaves available, the next one will be within: " +
                                 JSON.parse(data).startString + "\n```");
@@ -137,7 +137,7 @@ bot.on('message', async message => {
                         }
                         message.channel.send("```" + challenges + " ```");
                     })
-                }).on('error', (err) => {
+                }).on('error', async (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -145,11 +145,11 @@ bot.on('message', async message => {
                 https.get('https://api.warframestat.us/pc/persistentEnemies', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
-                    res.on('data', function (d) {
+                    res.on('data', async function (d) {
                         data += d;
                     });
 
-                    res.on('end', () => {
+                    res.on('end', async () => {
                         if (JSON.parse(data).length <= 0) {
                             message.channel.send("```No acolyte/s available.```");
                             return;
@@ -163,7 +163,7 @@ bot.on('message', async message => {
                             i++
                         }
                     })
-                }).on('error', (err) => {
+                }).on('error', async (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -171,10 +171,10 @@ bot.on('message', async message => {
                 https.get('https://api.warframestat.us/pc/sortie', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
-                    res.on('data', function (d) {
+                    res.on('data', async function (d) {
                         data += d;
                     });
-                    res.on('end', () => {
+                    res.on('end', async () => {
                         let i = 1;
                         let mission = new String();
                         message.channel.send("```" + JSON.parse(data).boss + ": " + JSON.parse(data).faction
@@ -186,7 +186,7 @@ bot.on('message', async message => {
                         }
                         message.channel.send("```" + mission + " ```");
                     })
-                }).on('error', (err) => {
+                }).on('error', async (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -194,10 +194,10 @@ bot.on('message', async message => {
                 https.get('https://api.warframestat.us/pc/syndicateMissions', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
-                    res.on('data', function (d) {
+                    res.on('data', async function (d) {
                         data += d;
                     });
-                    res.on('end', () => {
+                    res.on('end', async () => {
                         let i = 1;
                         let j = 0;
                         let rewardLength = 0;
@@ -224,7 +224,7 @@ bot.on('message', async message => {
                             }
                         }
                     });
-                }).on('error', (err) => {
+                }).on('error', async (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -232,10 +232,10 @@ bot.on('message', async message => {
                 https.get('https://api.warframestat.us/pc/syndicateMissions', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
-                    res.on('data', function (d) {
+                    res.on('data', async function (d) {
                         data += d;
                     });
-                    res.on('end', () => {
+                    res.on('end', async () => {
                         let i = 1;
                         let j = 0;
                         let rewardLength = 0;
@@ -262,7 +262,7 @@ bot.on('message', async message => {
                             }
                         }
                     });
-                }).on('error', (err) => {
+                }).on('error', async (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -270,10 +270,10 @@ bot.on('message', async message => {
                 https.get('https://api.warframestat.us/pc/vallisCycle', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
-                    res.on('data', function (d) {
+                    res.on('data', async function (d) {
                         data += d;
                     });
-                    res.on('end', () => {
+                    res.on('end', async () => {
                         console.log(JSON.parse(data));
                         if (JSON.parse(data).isWarm) {
                             message.channel.send("```ini\n" + "[Queda: " + JSON.parse(data).timeLeft + " para el frio]\n" + "```");
@@ -281,7 +281,7 @@ bot.on('message', async message => {
                             message.channel.send("```diff\n" + "- Queda: " + JSON.parse(data).timeLeft + " para el calor.\n" + "```");
                         }
                     });
-                }).on('error', (err) => {
+                }).on('error', async (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -289,10 +289,10 @@ bot.on('message', async message => {
                 https.get('https://api.warframestat.us/pc/voidTrader', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
-                    res.on('data', function (d) {
+                    res.on('data', async function (d) {
                         data += d;
                     });
-                    res.on('end', () => {
+                    res.on('end', async () => {
                         console.log(JSON.parse(data));
                         if (JSON.parse(data).active) {
                             message.channel.send("```" + "Queda: " + JSON.parse(data).endString + " para que llegue a " + JSON.parse(data).location + "```");
@@ -300,7 +300,7 @@ bot.on('message', async message => {
                             message.channel.send("```" + "Queda: " + JSON.parse(data).startString + " para que llegue a " + JSON.parse(data).location + "```");
                         }
                     });
-                }).on('error', (err) => {
+                }).on('error', async (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -308,10 +308,10 @@ bot.on('message', async message => {
                 https.get('https://api.warframestat.us/pc/voidTrader', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
-                    res.on('data', function (d) {
+                    res.on('data', async function (d) {
                         data += d;
                     });
-                    res.on('end', () => {
+                    res.on('end', async () => {
                         if (JSON.parse(data).active) {
                             let i = 0;
                             let rewardPool = new String();
@@ -326,7 +326,7 @@ bot.on('message', async message => {
                             message.channel.send("```" + "Queda: " + JSON.parse(data).startString + " para que llegue a " + JSON.parse(data).location + "```");
                         }
                     });
-                }).on('error', (err) => {
+                }).on('error', async (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -334,13 +334,13 @@ bot.on('message', async message => {
                 https.get('https://api.warframestat.us/pc/constructionProgress', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
-                    res.on('data', function (d) {
+                    res.on('data', async function (d) {
                         data += d;
                     });
-                    res.on('end', () => {
+                    res.on('end', async () => {
                         message.channel.send("```Fomorian state: " + JSON.parse(data).fomorianProgress + "%```");
                     });
-                }).on('error', (err) => {
+                }).on('error', async (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -348,13 +348,13 @@ bot.on('message', async message => {
                 https.get('https://api.warframestat.us/pc/constructionProgress', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
-                    res.on('data', function (d) {
+                    res.on('data', async function (d) {
                         data += d;
                     });
-                    res.on('end', () => {
+                    res.on('end', async () => {
                         message.channel.send("```Razorback state: " + JSON.parse(data).razorbackProgress + "%```");
                     });
-                }).on('error', (err) => {
+                }).on('error', async (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -362,10 +362,10 @@ bot.on('message', async message => {
                 https.get('https://api.warframestat.us/pc/fissures', async (res) => {
                     var data = new String();
                     console.log('statusCode:', res.statusCode);
-                    res.on('data', function (d) {
+                    res.on('data', async function (d) {
                         data += d;
                     });
-                    res.on('end', () => {
+                    res.on('end', async () => {
                         let mission = new String();
                         let i = 1;
                         for (let fissures of JSON.parse(data)) {
@@ -376,7 +376,7 @@ bot.on('message', async message => {
                         }
                         message.channel.send("```" + mission + "```");
                     });
-                }).on('error', (err) => {
+                }).on('error', async (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
