@@ -6,7 +6,7 @@ require('dotenv/config');
 bot.login(process.env.TOKEN);
 
 bot.on('ready', async () => {
-    process.env.PORT
+    process.env.PORT;
     console.log("Ordis is ready.");
 
     bot.user.setActivity("'$help' to help you tenno :)");
@@ -30,8 +30,8 @@ bot.on('message', async message => {
                     "```md\n# $cetus: Shows the state in Cetus.\n"
                     + "\n# $earth:  Shows the state in Tierra.\n" +
                     "\n# $events: Shows active events.\n" +
-                    "\n# $nightwave: Shows nightwave missions.\n" + 
-                    "\n# $acolytes: Shows the state of the acolytes.\n" + 
+                    "\n# $nightwave: Shows nightwave missions.\n" +
+                    "\n# $acolytes: Shows the state of the acolytes.\n" +
                     "\n# $sortie: Shows sortie state.\n" +
                     "\n# $ostrons: Show Ostrons missions and their status.\n" +
                     "\n# $fortuna: Show Fortuna missions and their status.\n" +
@@ -42,7 +42,7 @@ bot.on('message', async message => {
                     "\n# $razorbackprogress: Shows the progress of Razorback.\n" +
                     "\n# $fissures: Shows the fissures, the mission and the relic type.\n" +
                     "\n# $cleanordis: Clean the text channel."
-                    +"```");
+                    + "```");
                 break;
             case 'cetus':
                 https.get('https://api.warframestat.us/pc/cetusCycle', (res) => {
@@ -200,22 +200,32 @@ bot.on('message', async message => {
                     });
                     res.on('end', () => {
                         let i = 1;
+                        let j = 0;
                         let rewardLength = 0;
                         let rewardPool = new String();
                         let mission = new String();
-                        for (let jobs of JSON.parse(data)[0].jobs) {
-                            while (rewardLength < jobs.rewardPool.length) {
-                                rewardPool += jobs.rewardPool[rewardLength] + ", ";
-                                rewardLength++;
+                        while (JSON.parse(data).length > j) {
+                            if (JSON.parse(data)[j].syndicate === "Ostrons") {
+                                for (let jobs of JSON.parse(data)[j].jobs) {
+                                    console.log(jobs);
+                                    while (rewardLength < jobs.rewardPool.length) {
+                                        rewardPool += jobs.rewardPool[rewardLength] + ", ";
+                                        rewardLength++;
+                                        console.log(jobs);
+                                    }
+                                    mission += "Mision " + i + ": " + jobs.type +
+                                        "\nTime remaining: " + JSON.parse(data)[j].eta +
+                                        "\nRewards: " + rewardPool.substring(0, rewardPool.length - 2) + "\n\n";
+                                    i++
+                                    rewardPool = new String();
+                                    rewardLength = 0;
+                                }
+                                message.channel.send("```" + mission + "```");
+                                return;
+                            } else {
+                                j++;
                             }
-                            mission += "Mision " + i + ": " + jobs.type +
-                                "\nTime remaining: " + JSON.parse(data)[0].eta +
-                                "\nRewards: " + rewardPool.substring(0, rewardPool.length - 2) + "\n\n";
-                            i++
-                            rewardPool = new String();
-                            rewardLength = 0;
                         }
-                        message.channel.send("```" + mission + "```");
                     });
                 }).on('error', (err) => {
                     console.log("Error: " + err.message);
@@ -230,22 +240,32 @@ bot.on('message', async message => {
                     });
                     res.on('end', () => {
                         let i = 1;
+                        let j = 0;
                         let rewardLength = 0;
                         let rewardPool = new String();
                         let mission = new String();
-                        for (let jobs of JSON.parse(data)[1].jobs) {
-                            while (rewardLength < jobs.rewardPool.length) {
-                                rewardPool += jobs.rewardPool[rewardLength] + ", ";
-                                rewardLength++;
+                        while (JSON.parse(data).length > j) {
+                            if (JSON.parse(data)[j].syndicate === "Solaris United") {
+                                for (let jobs of JSON.parse(data)[j].jobs) {
+                                    console.log(jobs);
+                                    while (rewardLength < jobs.rewardPool.length) {
+                                        rewardPool += jobs.rewardPool[rewardLength] + ", ";
+                                        rewardLength++;
+                                        console.log(jobs);
+                                    }
+                                    mission += "Mision " + i + ": " + jobs.type +
+                                        "\nTime remaining: " + JSON.parse(data)[j].eta +
+                                        "\nRewards: " + rewardPool.substring(0, rewardPool.length - 2) + "\n\n";
+                                    i++
+                                    rewardPool = new String();
+                                    rewardLength = 0;
+                                }
+                                message.channel.send("```" + mission + "```");
+                                return;
+                            } else {
+                                j++;
                             }
-                            mission += "Mision " + i + ": " + jobs.type +
-                                "\nTime remaining: " + JSON.parse(data)[0].eta +
-                                "\nRewards: " + rewardPool.substring(0, rewardPool.length - 2) + "\n\n";
-                            i++
-                            rewardPool = new String();
-                            rewardLength = 0;
                         }
-                        message.channel.send("```" + mission + "```");
                     });
                 }).on('error', (err) => {
                     console.log("Error: " + err.message);
@@ -366,7 +386,7 @@ bot.on('message', async message => {
                 });
                 break;
             case 'cleanordis':
-                let fetched = await message.channel.fetchMessages({limit: 100});
+                let fetched = await message.channel.fetchMessages({ limit: 100 });
                 message.channel.bulkDelete(fetched);
                 message.channel.send("Ordis has cleaned the messages :)");
                 break;
