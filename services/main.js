@@ -1,13 +1,12 @@
 const Discord = require("discord.js");
 const https = require("https");
 const bot = new Discord.Client();
-//require('dotenv/config');
 
 bot.login(process.env.TOKEN);
 
 bot.on('ready', async () => {
     console.log("Ordis is ready.");
-
+    process.env.PORT || 30000;
     bot.user.setActivity("'$help' to help you tenno :)");
     return;
 });
