@@ -4,11 +4,12 @@
     "description": "This bot serves to display warframe information such as invasions, open world cycles and alerts.",
     "main": "main.js",
     "author": "Kenshiro",
-    "scripts":{
-        "start":"node services/main.js"
+    "scripts": {
+        "start": "node services/main.js"
     },
     "dependencies": {
         "discord.js": "^11.5.1",
+        "dotenv": "^8.1.0",
         "https": "^1.0.0"
     }
 }

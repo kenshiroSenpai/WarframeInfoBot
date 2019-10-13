@@ -1,8 +1,9 @@
 const Discord = require("discord.js");
 const https = require("https");
-const auth = require('../auth.json');
 const bot = new Discord.Client();
-bot.login(auth.token);
+require('dotenv/config');
+
+bot.login(process.env.TOKEN);
 
 bot.on('ready', async () => {
     console.log("Ordis is ready.");
