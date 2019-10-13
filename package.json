@@ -5,7 +5,6 @@
     "main": "main.js",
     "author": "Kenshiro",
     "scripts": {
-        "postinstall": "npm run build",
         "start": "node services/main.js"
     },
     "dependencies": {
