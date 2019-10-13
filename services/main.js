@@ -61,7 +61,7 @@ bot.on('message', async message => {
                         }
 
                     })
-                }).on('error', (err) => {
+                }).catch('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -81,7 +81,7 @@ bot.on('message', async message => {
                                 "```");
                         }
                     });
-                }).on('error', (err) => {
+                }).catch('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -109,7 +109,7 @@ bot.on('message', async message => {
                             i++
                         }
                     })
-                }).on('error', (err) => {
+                }).catch('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -138,7 +138,7 @@ bot.on('message', async message => {
                         }
                         message.channel.send("```" + challenges + " ```");
                     })
-                }).on('error', (err) => {
+                }).catch('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -164,7 +164,7 @@ bot.on('message', async message => {
                             i++
                         }
                     })
-                }).on('error', (err) => {
+                }).catch('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -187,7 +187,7 @@ bot.on('message', async message => {
                         }
                         message.channel.send("```" + mission + " ```");
                     })
-                }).on('error', (err) => {
+                }).catch('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -225,7 +225,7 @@ bot.on('message', async message => {
                             }
                         }
                     });
-                }).on('error', (err) => {
+                }).catch('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -263,7 +263,7 @@ bot.on('message', async message => {
                             }
                         }
                     });
-                }).on('error', (err) => {
+                }).catch('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -282,7 +282,7 @@ bot.on('message', async message => {
                             message.channel.send("```diff\n" + "- Queda: " + JSON.parse(data).timeLeft + " para el calor.\n" + "```");
                         }
                     });
-                }).on('error', (err) => {
+                }).catch('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -301,7 +301,7 @@ bot.on('message', async message => {
                             message.channel.send("```" + "Queda: " + JSON.parse(data).startString + " para que llegue a " + JSON.parse(data).location + "```");
                         }
                     });
-                }).on('error', (err) => {
+                }).catch('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -327,7 +327,7 @@ bot.on('message', async message => {
                             message.channel.send("```" + "Queda: " + JSON.parse(data).startString + " para que llegue a " + JSON.parse(data).location + "```");
                         }
                     });
-                }).on('error', (err) => {
+                }).catch('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -341,7 +341,7 @@ bot.on('message', async message => {
                     res.on('end', () => {
                         message.channel.send("```Fomorian state: " + JSON.parse(data).fomorianProgress + "%```");
                     });
-                }).on('error', (err) => {
+                }).catch('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -355,7 +355,7 @@ bot.on('message', async message => {
                     res.on('end', () => {
                         message.channel.send("```Razorback state: " + JSON.parse(data).razorbackProgress + "%```");
                     });
-                }).on('error', (err) => {
+                }).catch('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
@@ -377,7 +377,7 @@ bot.on('message', async message => {
                         }
                         message.channel.send("```" + mission + "```");
                     });
-                }).on('error', (err) => {
+                }).catch('error', (err) => {
                     console.log("Error: " + err.message);
                 });
                 break;
