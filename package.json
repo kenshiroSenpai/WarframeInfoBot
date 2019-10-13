@@ -5,11 +5,14 @@
     "main": "main.js",
     "author": "Kenshiro",
     "scripts": {
+        "postinstall": "npm run build",
         "start": "node services/main.js"
     },
     "dependencies": {
         "discord.js": "^11.5.1",
-        "dotenv": "^8.1.0",
         "https": "^1.0.0"
+    },
+    "devDependencies": {
+        "dotenv": "^8.1.0"
     }
 }

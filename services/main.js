@@ -9,6 +9,7 @@ bot.on('ready', async () => {
     console.log("Ordis is ready.");
 
     bot.user.setActivity("'$help' to help you tenno :)");
+    return;
 });
 
 bot.on('message', async message => {
@@ -131,8 +132,8 @@ bot.on('message', async message => {
                         let challenges = "";
                         for (let event of JSON.parse(data).activeChallenges) {
                             let exp = new Date(event.expiry);
-                            challenges += i + ": " + event.desc + " (" + event.reputation + " rep)." + "\nTime: " + Math.round((exp - today) / 3600000)
-                                + " hours left " + "\n\n"
+                            challenges += i + ": " + event.desc + " (" + event.reputation + " rep)." + 
+                            "\nTime: " + Math.round((exp - today) / 3600000) + " hours left " + "\n\n"
                             i++
                         }
                         message.channel.send("```" + challenges + " ```");
