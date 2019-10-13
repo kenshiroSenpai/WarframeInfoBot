@@ -26,11 +26,11 @@ bot.on('message', async message => {
         switch (cmd) {
             case 'help':
                 message.channel.send("```diff\n+ Command:\n```" +
-                    "```md\n# $cetus: Shows the state in Cetus.\n"
-                    + "\n# $earth:  Shows the state in Tierra.\n" +
+                    "```md\n# $cetus: Shows Cetus state.\n"
+                    + "\n# $earth: Shows Earth state.\n" +
                     "\n# $events: Shows active events.\n" +
                     "\n# $nightwave: Shows nightwave missions.\n" +
-                    "\n# $acolytes: Shows the state of the acolytes.\n" +
+                    "\n# $acolytes: Shows acolytes state.\n" +
                     "\n# $sortie: Shows sortie state.\n" +
                     "\n# $ostrons: Show Ostrons missions and their status.\n" +
                     "\n# $fortuna: Show Fortuna missions and their status.\n" +
