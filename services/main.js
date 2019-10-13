@@ -92,7 +92,6 @@ bot.on('message', async message => {
                     });
 
                     res.on('end', async () => {
-
                         let i = 1;
                         let today = new Date();
                         for (let event of JSON.parse(data)) {
@@ -273,7 +272,6 @@ bot.on('message', async message => {
                         data += d;
                     });
                     res.on('end', async () => {
-                        console.log(JSON.parse(data));
                         if (JSON.parse(data).isWarm) {
                             message.channel.send("```ini\n" + "[Queda: " + JSON.parse(data).timeLeft + " para el frio]\n" + "```");
                         } else {
@@ -292,7 +290,6 @@ bot.on('message', async message => {
                         data += d;
                     });
                     res.on('end', async () => {
-                        console.log(JSON.parse(data));
                         if (JSON.parse(data).active) {
                             message.channel.send("```" + "Queda: " + JSON.parse(data).endString + " para que llegue a " + JSON.parse(data).location + "```");
                         } else {
