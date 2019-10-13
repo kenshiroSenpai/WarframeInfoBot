@@ -1,12 +1,13 @@
 const Discord = require("discord.js");
 const https = require("https");
 const bot = new Discord.Client();
+const dotenv = require("dotenv/config");
 
-bot.login(process.env.TOKEN);
+bot.login(process.env.TOKEN_BOT);
 
 bot.on('ready', async () => {
     console.log("Ordis is ready.");
-    process.env.PORT || 30000;
+    //process.env.PORT || 30000;
     bot.user.setActivity("'$help' to help you tenno :)");
     return;
 });
@@ -58,7 +59,6 @@ bot.on('message', async message => {
                             message.channel.send("```fix\n" + JSON.parse(data).timeLeft + " left until day.\n" +
                                 "```");
                         }
-
                     })
                 }).on('error', async (err) => {
                     console.log("Error: " + err.message);
