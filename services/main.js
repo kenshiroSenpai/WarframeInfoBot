@@ -23,7 +23,7 @@ bot.on('message', async message => {
         var cmd = args[0];
 
         args = args.splice(1);
-        switch (cmd.toLowerCase()) {
+        switch (cmd) {
             case 'help':
                 message.channel.send("```diff\n+ Command:\n```" +
                     "```md\n# $cetus: Shows the state in Cetus.\n"
@@ -63,7 +63,6 @@ bot.on('message', async message => {
                 }).on('error', (err) => {
                     console.log("Error: " + err.message);
                 });
-                word = null;
                 break;
             case 'earth':
                 https.get('https://api.warframestat.us/pc/earthCycle', (res) => {
