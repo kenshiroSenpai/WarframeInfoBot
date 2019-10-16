@@ -377,7 +377,7 @@ bot.on('message', async message => {
                 });
                 break;
             case 'cleanordis':
-                let fetched = await message.channel.fetchMessages({ limit: 100 });
+                let fetched = await message.channel.fetchMessages({ limit: 90 });
                 message.channel.bulkDelete(fetched);
                 message.channel.send("Ordis has cleaned the messages :)");
                 break;
