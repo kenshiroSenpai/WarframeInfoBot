@@ -29,4 +29,4 @@ A bot of discord that show information about Warframe.
 
 #### $fissures: Shows the fissures, the mission and the relic type.
 
-#### $cleanordis: Clean the text channel.
+#### $cleanordis: Clean the text channel.(50 messages)
